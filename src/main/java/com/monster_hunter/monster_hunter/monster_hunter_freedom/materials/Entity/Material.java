@@ -1,6 +1,7 @@
 package com.monster_hunter.monster_hunter.monster_hunter_freedom.materials.Entity;
 
 
+import com.monster_hunter.monster_hunter.monster_hunter_freedom.materials.enums.Category;
 import io.hypersistence.utils.hibernate.type.json.JsonBinaryType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -20,15 +21,26 @@ import java.util.Map;
 public class Material {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    //Nombre del objeto/material
+    //Name of the objects/materials
     @Type(JsonBinaryType.class)
     @Column(columnDefinition = "jsonb")
     private Map<String, String> name;
 }
 
-    //Descripción del objeto/material
+    //Description of the objects/materials
+    @Type(JsonBinaryType.class)
+    @Column(columnDefinition = "jsonb")
+    private Map<String, String> description;
 
 
-    //
+
+    //How to get
+    @Type(JsonBinaryType)
+    @Column(columnDefinition = "jsonb")
+    private Map<String, String> howTo;
+
+    //Category
+    @Column(name = "category")
+    private Category Category;
