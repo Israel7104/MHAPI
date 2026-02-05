@@ -1,4 +1,4 @@
-package com.monster_hunter.monster_hunter.monster_hunter_freedom.materials.enums;
+package com.monster_hunter.monster_hunter.freedom.materials.enums;
 
 public enum Category {
     CATEGORY_CONSUMABLE_ITEMS, CATEGORY_GATHERING_TOOLS, CATEGORY_HUNTING_TOOLS, CATEGORY_SUPPLY_AND_ACCOUNT_ITEMS, CATEGORY_BOWGUN_AMMUNITION,

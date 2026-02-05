@@ -1,14 +1,15 @@
-package com.monster_hunter.monster_hunter.monster_hunter_freedom.materials.Entity;
+package com.monster_hunter.monster_hunter.freedom.materials.Entity;
 
 
-import com.monster_hunter.monster_hunter.monster_hunter_freedom.materials.enums.Category;
-import io.hypersistence.utils.hibernate.type.json.JsonBinaryType;
+import com.monster_hunter.monster_hunter.freedom.materials.enums.Category;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.Type;
+import org.hibernate.type.SqlTypes;
 
 import java.util.Map;
 
@@ -23,24 +24,18 @@ public class Material {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //Name of the objects/materials
-    @Type(JsonBinaryType.class)
+    @JdbcTypeCode(SqlTypes.JSON) // Soporte nativo de Hibernate 6/7
     @Column(columnDefinition = "jsonb")
     private Map<String, String> name;
-}
 
-    //Description of the objects/materials
-    @Type(JsonBinaryType.class)
+    @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "jsonb")
     private Map<String, String> description;
 
-
-
-    //How to get
-    @Type(JsonBinaryType)
+    @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "jsonb")
     private Map<String, String> howTo;
 
-    //Category
-    @Column(name = "category")
-    private Category Category;
+    @Enumerated(EnumType.STRING)
+    private Category category;
+}
